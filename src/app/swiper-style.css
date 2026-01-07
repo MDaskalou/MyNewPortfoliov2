@@ -1,0 +1,33 @@
+﻿/* --- src/app/swiper-styles.css --- */
+
+/* Generell styling för Swiper-behållaren (inte SwiperSlide) */
+.swiper {
+    width: 100%; /* Fyller förälderns bredd */
+    height: 100%; /* Eller en specifik höjd om du vill */
+}
+
+/* Anpassa pagination (prickarna/bollarna) */
+.swiper-pagination-bullet {
+    background: theme('colors.gray.600') !important; /* Standardfärg */
+    opacity: 0.7 !important;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Färg för den aktiva pricken */
+.swiper-pagination-bullet-active {
+    background: theme('colors.indigo.600') !important; /* Din accentfärg */
+    opacity: 1 !important;
+    transform: scale(1.2); /* Gör den aktiva lite större */
+}
+
+/* Hover-effekt på prickar */
+.swiper-pagination-bullet:hover {
+    background: theme('colors.indigo.400') !important; /* Ljusare accentfärg vid hover */
+    opacity: 0.9 !important;
+}
+
+
+/* Anpassa navigationsknappar (pilar - om du använder dem) */
+/* .swiper-button-next, .swiper-button-prev {
+  color: theme('colors.indigo.600') !important;
+} */

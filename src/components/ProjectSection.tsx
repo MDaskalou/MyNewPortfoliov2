@@ -15,25 +15,31 @@ import { Project } from './project-types';
 
 const projectsData: Project[] = [
     {
-        title: 'C# .NET Web API',
+        title: 'Next.js, React och Tailwind CSS.NET ',
         description:
-            'En robust backend-applikation byggd med .NET 6, Entity Framework Core och SQL Server.',
+            'Mitt första officiella hemsida byggd med Next.js, React och Tailwind CSS.'+
+        'Hemsidan är byggd för en dansskola och inkluderar anpassade sektioner för klasser, instruktörer och anmälningar.',
         longDescription:
-            'Detta projekt var en djupdykning i .NET-ekosystemet för att bygga ett skalbart och säkert RESTful API. Det inkluderar JWT-autentisering, repository pattern och datahantering med Entity Framework Core mot en SQL Server-databas. Projektet demonstrerar best practices för backend-utveckling med fokus på säkerhet, prestanda och underhållbarhet.',
-        imageUrl: 'https://placehold.co/600x400/1f2937/9ca3af?text=C%23+.NET+Web+API',
-        tags: ['C#', '.NET 6', 'Entity Framework', 'SQL Server', 'REST API', 'JWT'],
-        githubUrl: 'https://github.com/MikaelDaskalou/mitt-api-repo',
+            'Detta projekt var mitt första större försök att bygga en modern responsiv hemsida från grunden med Next.js och Tailwind CSS. ',
+        imageUrl: '/Projekt1fuego.png',
+        tags: ['React', 'Next.js', 'Tailwind CSS', 'Frontend'],
+        githubUrl: 'https://github.com/MDaskalou/FuegoDanceSchoolUpdated',
+        liveUrl: 'https://fuegodanceschool.se',
     },
     {
-        title: 'React E-handel',
+        title: 'Hemsida för StudieTeknik',
         description:
-            'En frontend för en e-handel byggd i React och TypeScript, som kommunicerar med ett externt API.',
+            'Detta är en hemsida för en studieplattform som hjälper studenter att förbättra sina studietekniker.'+
+        'Byggd med C# .Net för backend och Next.js för frontend med Tailwind CSS för styling samt SQL databas.',
         longDescription:
-            'En fullt fungerande e-handels-frontend med produktlistning, varukorg och en simulerad kassaprocess. Byggd med React, TypeScript och Tailwind CSS för att skapa en modern och responsiv användarupplevelse. All state hanteras med React Context och applikationen följer moderna designprinciper med fokus på användarvänlighet och tillgänglighet.',
-        imageUrl: 'https://placehold.co/600x400/1f2937/9ca3af?text=React+E-handel',
-        tags: ['React', 'TypeScript', 'Tailwind CSS', 'Context API', 'Frontend'],
-        githubUrl: 'https://github.com/MikaelDaskalou/min-ehandel-repo',
-        liveUrl: 'https://min-ehandel-demo.com',
+            'Detta är ett fullstack-projekt där jag byggde både backend och frontend. Backend är utvecklad med C# .Net och hanterar användarautentisering, ' +
+            'kursdata och AI-integration för att hjälpa elever att hjälpa eleverna att strukturera och effektivisera sina studier . ' +
+            'Frontend är byggd med Next.js och Tailwind CSS för att skapa en snabb och responsiv användarupplevelse.',
+        imageUrl: '/Projekt2StudieTeknik.png',
+        tags: ['React', 'TypeScript', 'Tailwind CSS', 'API', 'Frontend', 'C# .NET', 'SQL', 'Backend', 'AI-Integration'],
+        githubUrl: 'https://github.com/MDaskalou/StudyTeknikBE',
+        videoUrl: 'https://res.cloudinary.com/dkjexjisq/video/upload/v1767835604/Sk%C3%A4rminspelning_2025-12-25_140331_r7zho1.mp4',
+
     },
     {
         title: 'Portfolio (Denna sida)',
@@ -91,13 +97,13 @@ export default function ProjectSection() {
                         dynamicBullets: false,
                         renderBullet: (index, className) => {
                             return `<span class="${className}" style="
-                                width: 12px; 
-                                height: 12px; 
-                                background: rgb(79, 70, 229);
-                                opacity: 0.3;
-                                transition: all 0.3s ease;
-                                margin: 0 6px;
-                            "></span>`;
+                width: 12px; 
+                height: 12px; 
+                background: rgb(79, 70, 229);
+                opacity: 0.3;
+                transition: all 0.3s ease;
+                margin: 0 6px;
+            "></span>`;
                         },
                     }}
                     autoplay={{
@@ -114,10 +120,13 @@ export default function ProjectSection() {
                         }
                     }}
                     onSwiper={setSwiperInstance}
-                    className="pb-70 [&_.swiper-pagination]:!bottom-0 [&_.swiper-pagination-bullet-active]:!opacity-100 [&_.swiper-pagination-bullet-active]:!scale-125 [&_.swiper-pagination-bullet]:hover:!opacity-70"
+                    // HÄR ÄR ÄNDRINGARNA:
+                    // 1. pb-16 ger lagom utrymme under korten
+                    // 2. !-bottom-2 flyttar ner prickarna ytterligare från kortens kant
+                    className="pb-16 overflow-visible [&_.swiper-pagination]:!bottom-[-10px] [&_.swiper-pagination-bullet-active]:!opacity-100 [&_.swiper-pagination-bullet-active]:!scale-125 [&_.swiper-pagination-bullet]:hover:!opacity-70"
                 >
                     {projectsData.map((project, index) => (
-                        <SwiperSlide key={project.title}>
+                        <SwiperSlide key={project.title} className="pb-4">
                             <ExpandableProjectCard
                                 title={project.title}
                                 description={project.description}
@@ -126,6 +135,7 @@ export default function ProjectSection() {
                                 tags={project.tags}
                                 githubUrl={project.githubUrl}
                                 liveUrl={project.liveUrl}
+                                videoUrl={project.videoUrl}
                                 isExpanded={expandedIndex === index}
                                 onToggle={() => handleToggle(index)}
                             />

@@ -10,9 +10,10 @@ export default function GitHubSection() {
     const [graphType, setGraphType] = useState('activity');
     const [imageError, setImageError] = useState(false);
 
-    const languageStatsUrl = `https://github-readme-stats.vercel.app/api/top-langs?username=${GITHUB_USERNAME}&theme=dark&hide_border=true&layout=compact&bg_color=0d1117&title_color=a78bfa&text_color=c9d1d9&icon_color=a78bfa`;    const activityGraphUrl = `https://github-readme-activity-graph.vercel.app/graph?username=${GITHUB_USERNAME}&theme=github-dark&hide_border=true&area=true&bg_color=0d1117&color=a78bfa&line=8b5cf6&point=c084fc`;
-    const streakStatsUrl = `https://github-readme-streak-stats.herokuapp.com/?user=${GITHUB_USERNAME}&theme=dark&hide_border=true&background=0d1117&ring=a78bfa&fire=c084fc&currStreakLabel=a78bfa`;
+    const languageStatsUrl = `https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=${GITHUB_USERNAME}&theme=dark&hide_border=true&layout=compact&bg_color=0d1117&title_color=a78bfa&text_color=c9d1d9&icon_color=a78bfa&langs_count=8`;    const streakStatsUrl = `https://streak-stats.demolab.com?user=${GITHUB_USERNAME}&theme=dark&hide_border=true&background=0d1117&ring=a78bfa&fire=c084fc&currStreakLabel=a78bfa`;
     const simpleChartUrl = `https://ghchart.rshah.org/8b5cf6/${GITHUB_USERNAME}`;
+    const activityGraphUrl = `https://github-readme-activity-graph.vercel.app/graph?username=${GITHUB_USERNAME}&theme=react-dark&hide_border=true&area=true&bg_color=0d1117&color=a78bfa&line=8b5cf6&point=c084fc`;
+
 
     const getGraphUrl = () => {
         switch(graphType) {
@@ -135,32 +136,49 @@ export default function GitHubSection() {
                     </motion.div>
 
                     {/* Language Stats */}
+                    {/* Language Stats - Custom Native Version */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="rounded-xl bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 p-6 md:p-8 border border-gray-800 shadow-xl group hover:border-indigo-500/50 transition-all duration-300"
+                        className="rounded-xl bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 p-6 md:p-8 border border-gray-800 shadow-xl group hover:border-indigo-500/50 transition-all duration-300 relative overflow-hidden"
                     >
-                        {/* Gradient overlay on hover */}
                         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/5 via-purple-600/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                         <div className="relative z-10">
-                            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                                 <span className="inline-block w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>
                                 Toppspråk
                             </h3>
 
-                            <div className="flex justify-center items-center bg-black/20 rounded-lg p-4">
-                                <img
-                                    src={languageStatsUrl}
-                                    alt={`${GITHUB_USERNAME}'s Top Languages`}
-                                    className="w-full h-auto rounded-lg"
-                                    onError={(e) => {
-                                        e.currentTarget.style.display = 'none';
-                                    }}
-                                />
+                            <div className="space-y-6">
+                                {[
+                                    { name: 'C#', percent: 55, color: 'bg-green-500' },
+                                    { name: 'TypeScript', percent: 26, color: 'bg-blue-500' },
+                                    { name: 'JavaScript', percent: 10, color: 'bg-yellow-400' },
+                                    { name: 'CSS', percent: 8, color: 'bg-purple-500' },
+                                ].map((lang) => (
+                                    <div key={lang.name} className="space-y-2">
+                                        <div className="flex justify-between text-sm font-medium">
+                                            <span className="text-gray-300">{lang.name}</span>
+                                            <span className="text-indigo-400">{lang.percent}%</span>
+                                        </div>
+                                        <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
+                                            <motion.div
+                                                initial={{ width: 0 }}
+                                                whileInView={{ width: `${lang.percent}%` }}
+                                                transition={{ duration: 1, delay: 0.5 }}
+                                                className={`h-full ${lang.color} shadow-[0_0_10px_rgba(0,0,0,0.5)]`}
+                                            />
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
+
+                            <p className="mt-8 text-xs text-gray-500 italic text-center">
+                                Baserat på senaste aktivitet i publika repon
+                            </p>
                         </div>
                     </motion.div>
                 </div>

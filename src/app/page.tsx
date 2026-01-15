@@ -8,6 +8,7 @@ import AboutMeSection from "@/components/AboutMeSection";
 import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import GitHubSection from "@/components/GitHubSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   return (
@@ -18,6 +19,8 @@ export default function Home() {
         <AboutMeSection />
         <SkillsSection />
           <ExperienceSection />
+        <ContactSection />
+
 
 
       </div>

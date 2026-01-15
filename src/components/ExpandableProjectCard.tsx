@@ -1,5 +1,5 @@
 ﻿import Image from 'next/image';
-import { FaGithub, FaPlay, FaTimes, FaChevronDown } from 'react-icons/fa';
+import { FaGithub, FaPlay, FaVideo, FaChevronDown } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { memo } from 'react';
 
@@ -10,6 +10,7 @@ type ProjectProps = {
     imageUrl: string;
     tags: string[];
     githubUrl: string;
+    videoUrl?: string;
     liveUrl?: string;
     isExpanded: boolean;
     onToggle: () => void;
@@ -23,6 +24,7 @@ function ExpandableProjectCard({
                                    tags,
                                    githubUrl,
                                    liveUrl,
+                                   videoUrl,
                                    isExpanded,
                                    onToggle,
                                }: ProjectProps) {
@@ -187,30 +189,52 @@ function ExpandableProjectCard({
                                 transition={{ delay: 0.5 }}
                                 className="flex flex-wrap gap-3 pt-2"
                             >
-                                <a
-                                    href={githubUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 rounded-lg bg-gray-800/80 backdrop-blur-sm px-5 py-3 text-sm font-medium text-gray-300 transition-all duration-300 hover:bg-gray-700 hover:text-white border border-gray-700/50 hover:border-gray-600 hover:shadow-lg hover:shadow-gray-700/20"
-                                    onClick={(e) => e.stopPropagation()}
-                                    aria-label={`Visa ${title} på GitHub`}
-                                >
-                                    <FaGithub className="text-lg" />
-                                    <span>Visa på GitHub</span>
-                                </a>
-                                {liveUrl && (
-                                    <a
-                                        href={liveUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 px-5 py-3 text-sm font-medium text-white transition-all duration-300 hover:from-indigo-500 hover:to-purple-500 hover:shadow-lg hover:shadow-indigo-500/30"
-                                        onClick={(e) => e.stopPropagation()}
-                                        aria-label={`Visa live demo av ${title}`}
-                                    >
-                                        <FaPlay className="text-sm" />
-                                        <span>Se Live Demo</span>
-                                    </a>
-                                )}
+                                <div className="flex flex-wrap gap-3 mt-6">
+                                    {/* GitHub-länk */}
+                                    {githubUrl && (
+                                        <a
+                                            href={githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 rounded-lg bg-gray-800/80 backdrop-blur-sm px-5 py-3 text-sm font-medium text-gray-300 transition-all duration-300 hover:bg-gray-700 hover:text-white border border-gray-700/50 hover:border-gray-600 hover:shadow-lg hover:shadow-gray-700/20"
+                                            onClick={(e) => e.stopPropagation()}
+                                            aria-label={`Visa ${title} på GitHub`}
+                                        >
+                                            <FaGithub className="text-lg" />
+                                            <span>Visa på GitHub</span>
+                                        </a>
+                                    )}
+
+                                    {/* Live Demo-länk */}
+                                    {liveUrl && (
+                                        <a
+                                            href={liveUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 px-5 py-3 text-sm font-medium text-white transition-all duration-300 hover:from-indigo-500 hover:to-purple-500 hover:shadow-lg hover:shadow-indigo-500/30"
+                                            onClick={(e) => e.stopPropagation()}
+                                            aria-label={`Visa live demo av ${title}`}
+                                        >
+                                            <FaPlay className="text-sm" />
+                                            <span>Se Live Demo</span>
+                                        </a>
+                                    )} {/* <--- Här saknades denna måsvinge tidigare */}
+
+                                    {/* Videodemo-länk */}
+                                    {videoUrl && (
+                                        <a
+                                            href={videoUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-pink-600 to-rose-600 px-5 py-3 text-sm font-medium text-white transition-all duration-300 hover:from-pink-500 hover:to-rose-500 hover:shadow-lg hover:shadow-rose-500/30"
+                                            onClick={(e) => e.stopPropagation()}
+                                            aria-label={`Visa videodemo av ${title}`}
+                                        >
+                                            <FaVideo className="text-sm" />
+                                            <span>Se Videodemo</span>
+                                        </a>
+                                    )}
+                                </div>
                             </motion.div>
                         </div>
                     </motion.div>

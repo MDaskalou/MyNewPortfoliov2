@@ -7,4 +7,5 @@ export type Project = {
     tags: string[];
     githubUrl: string;
     liveUrl?: string;
+    videoUrl?: string;
 };

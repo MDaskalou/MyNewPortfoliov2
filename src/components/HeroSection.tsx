@@ -128,8 +128,7 @@ export default function HeroSection() {
                                 animate={{ y: [0, -8, 0] }}
                                 transition={{ duration: 3, repeat: Infinity }}
                             >
-                                <p className="text-2xl font-extrabold text-white">2+</p>
-                                <p className="text-[10px] uppercase tracking-wider text-indigo-300 font-bold">År erfarenhet</p>
+
                             </motion.div>
                         </div>
                     </motion.div>

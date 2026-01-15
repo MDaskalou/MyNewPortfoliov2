@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const navLinks = [
     { name: 'Hem', href: '#hem' },
@@ -19,7 +20,8 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            // Vi sänker tröskeln till 20px så att bakgrunden aktiveras direkt när man börjar skrolla
+            setScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -27,9 +29,10 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed left-0 top-0 z-[100] w-full transition-all duration-500 ${
+            className={`fixed left-0 top-0 z-[100] w-full transition-all duration-300 ${
                 scrolled
-                    ? 'bg-gray-950/80 py-3 shadow-2xl backdrop-blur-lg border-b border-white/5'
+                    /* FIX: Ändrat till bg-gray-950 (solid) och ökat border-synlighet */
+                    ? 'bg-gray-950 py-3 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] border-b border-gray-800'
                     : 'bg-transparent py-6'
             }`}
         >
@@ -51,19 +54,17 @@ export default function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="relative text-sm font-medium text-gray-400 transition-colors hover:text-white group"
+                            className="relative text-sm font-medium text-gray-300 transition-colors hover:text-white group"
                         >
                             {link.name}
                             <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-indigo-500 transition-all group-hover:w-full" />
                         </Link>
                     ))}
 
-                    {/* Anlita mig - Primär CTA */}
                     <Link
                         href="#kontakt"
                         className="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-bold text-white transition-all duration-300 bg-indigo-600 rounded-full hover:bg-indigo-700 group shadow-lg shadow-indigo-500/25"
                     >
-                        <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
                         <span className="relative">Anlita mig</span>
                     </Link>
                 </div>
@@ -81,53 +82,69 @@ export default function Navbar() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 z-[99] flex flex-col items-center justify-center bg-gray-950/98 backdrop-blur-xl md:hidden"
+                        initial={{ opacity: 0, x: '100%' }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: '100%' }}
+                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                        /* FIX: bg-gray-950 (solid) säkerställer att ingen text under syns i mobilmenyn */
+                        className="fixed inset-0 z-[150] flex flex-col bg-gray-950 md:hidden"
                     >
-                        <button
-                            className="absolute top-6 right-6 text-4xl text-white"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            <HiX />
-                        </button>
+                        <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
+                            <div className="flex items-center gap-2">
+                                <div className="h-8 w-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white">
+                                    M
+                                </div>
+                                <span className="font-bold text-white">Mikael</span>
+                            </div>
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="p-2 text-3xl text-white hover:bg-white/10 rounded-full transition-colors"
+                            >
+                                <HiX />
+                            </button>
+                        </div>
 
-                        <ul className="space-y-6 text-center">
+                        <div className="flex flex-col items-center justify-center flex-grow space-y-8 px-6">
                             {navLinks.map((link, i) => (
-                                <motion.li
+                                <motion.div
                                     key={link.name}
-                                    initial={{ opacity: 0, y: 10 }}
+                                    initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.05 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="w-full text-center"
                                 >
                                     <Link
                                         href={link.href}
                                         onClick={() => setIsOpen(false)}
-                                        className="text-2xl font-semibold text-white hover:text-indigo-400 transition-colors"
+                                        className="block text-4xl font-bold text-white active:text-indigo-500 transition-colors"
                                     >
                                         {link.name}
                                     </Link>
-                                </motion.li>
+                                </motion.div>
                             ))}
-                            <motion.li
-                                initial={{ opacity: 0, y: 10 }}
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: navLinks.length * 0.05 }}
-                                className="pt-4"
+                                transition={{ delay: navLinks.length * 0.1 }}
+                                className="w-full pt-6"
                             >
                                 <Link
                                     href="#kontakt"
                                     onClick={() => setIsOpen(false)}
-                                    className="inline-block rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-3 text-xl font-bold text-white shadow-xl shadow-indigo-500/20"
+                                    className="flex items-center justify-center w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 py-5 text-xl font-bold text-white shadow-xl shadow-indigo-500/20"
                                 >
                                     Anlita mig
                                 </Link>
-                            </motion.li>
-                        </ul>
+                            </motion.div>
+                        </div>
 
-                        <div className="absolute bottom-12 text-gray-500 text-sm">
-                            © 2026 Mikael Daskalou
+                        <div className="p-10 text-center border-t border-white/5">
+                            <p className="text-gray-500 text-sm mb-4">© 2026 Mikael Daskalou</p>
+                            <div className="flex justify-center gap-6 text-2xl text-gray-400">
+                                <a href="https://github.com/mdaskalou" target="_blank" rel="noreferrer" className="hover:text-white transition-colors"><FaGithub /></a>
+                                <a href="https://www.linkedin.com/in/mikael-daskalou-46b424184/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors"><FaLinkedin /></a>
+                            </div>
                         </div>
                     </motion.div>
                 )}

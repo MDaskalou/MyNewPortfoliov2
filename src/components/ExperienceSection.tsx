@@ -35,12 +35,7 @@ const workData: TimelineItem[] = [
         date: 'Sep - Nov 2024',
         description: 'Utveckling av en lärplattform för studieteknik. Arbetade i en fullstack-miljö med C# .NET Core, React och SQL Server. Implementerade AI-stöd för att personifiera elevens inlärningsresa.',
     },
-    {
-        title: 'Gymnasielärare',
-        location: 'Drottning Blanka Gymnasium',
-        date: 'Aug 2019 — Jun 2024',
-        description: 'Ansvarig för undervisning och mentorskap. Utvecklade stark kommunikationsförmåga och erfarenhet av att leda grupper i en högpresterande miljö.',
-    },
+
     {
         title: 'Egenföretagare',
         location: 'Fuego Dance School',
@@ -51,9 +46,15 @@ const workData: TimelineItem[] = [
     {
         title: 'Vårdbiträde',
         location: 'Sahlgrenska Universitetssjukhuset',
-        date: 'Jun 2025 (Planerat)',
-        description: 'Kommande sommaruppdrag inom slutenvården. Ger värdefulla insikter i användarbehov inom kritiska verksamhetssystem och organisation.',
+        date: 'Jun 2025 - Nuvarande',
+        description: 'Arbetar extra inom psykiatrin avdelningen i Sahlgrenska sjukhus.',
     },
+    {
+        title: 'Gymnasielärare',
+        location: 'Drottning Blanka Gymnasium',
+        date: 'Aug 2019 — Jun 2024',
+        description: 'Ansvarig för undervisning och mentorskap. Utvecklade stark kommunikationsförmåga och erfarenhet av att leda grupper i en högpresterande miljö.',
+    }
 ];
 
 // --- Underkomponent: TimelineCard ---

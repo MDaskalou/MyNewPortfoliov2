@@ -47,9 +47,9 @@ const projectsData: Project[] = [
             'Min personliga portfolio, byggd från grunden med Next.js, React och Tailwind CSS.',
         longDescription:
             'Sidan du tittar på just nu. Byggd för att visa upp mina färdigheter inom modern frontend-utveckling med Next.js för prestanda och SEO, Tailwind CSS för snabb och flexibel styling, och Framer Motion för smidiga animationer. Koden är fullt typad med TypeScript och följer moderna best practices. Swiper används för en smidig projektvisning och hela sidan är optimerad för alla enheter.',
-        imageUrl: 'https://placehold.co/600x400/1f2937/9ca3af?text=Min+Portfolio',
+        imageUrl: '/Projekt3Portfolio.jpg',
         tags: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript', 'Framer Motion', 'Swiper'],
-        githubUrl: 'https://github.com/MikaelDaskalou/mikaels-portfolio',
+        githubUrl: 'https://github.com/MDaskalou/MyNewPortfoliov2',
     },
 ];
 

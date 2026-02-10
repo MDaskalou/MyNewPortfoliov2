@@ -1,0 +1,15 @@
+{
+  "title": "Vem är jag?",
+  "statusLabel": "Status",
+  "statusValue": "Söker LIA 2 / Jobb",
+  "subtitle": "Från pedagog till utvecklare",
+  "paragraphs": [
+    "Jag studerar systemutveckling vid <strong>NBI/Handelsakademin</strong> i Göteborg. Med en stabil grund i <em>C# .NET</em> och relationsdatabaser bygger jag robust backend-logik, men min passion stannar inte där.",
+    "Genom självstudier har jag omfamnat den moderna frontend-stacken. Just nu skapar jag snabba, responsiva webblösningar med <strong>Next.js, TypeScript och Tailwind CSS</strong>. För mig handlar utveckling om att förstå helheten - från databasarkitektur till användarupplevelse."
+  ],
+  "hybridSkill": {
+    "title": "Hybrid-kompetens",
+    "description": "Mina år som <strong>gymnasielärare</strong> och <strong>egenföretagare</strong> har gett mig en unik förmåga att strukturera komplexa problem, kommunicera lösningar och driva projekt framåt med ett affärsmässigt tänk."
+  },
+  "focusAreas": "Fokusområden just nu:"
+}

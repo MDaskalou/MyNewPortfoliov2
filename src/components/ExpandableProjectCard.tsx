@@ -1,7 +1,10 @@
-﻿import Image from 'next/image';
+﻿'use client';
+
+import Image from 'next/image';
 import { FaGithub, FaPlay, FaVideo, FaChevronDown } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { memo } from 'react';
+import { useProjectsTranslation } from '@/context/TranslationContext';
 
 type ProjectProps = {
     title: string;
@@ -28,6 +31,8 @@ function ExpandableProjectCard({
                                    isExpanded,
                                    onToggle,
                                }: ProjectProps) {
+    const { t } = useProjectsTranslation();
+
     return (
         <motion.div
             layout
@@ -60,7 +65,7 @@ function ExpandableProjectCard({
                 >
                     <Image
                         src={imageUrl}
-                        alt={`Skärmdump av ${title}`}
+                        alt={`Screenshot of ${title}`}
                         fill
                         className={`object-cover transition-transform duration-500 ${
                             isExpanded ? 'scale-105' : 'group-hover:scale-110'
@@ -93,7 +98,7 @@ function ExpandableProjectCard({
                             animate={{ opacity: 1, y: 0 }}
                             className="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-indigo-600/90 backdrop-blur-sm text-xs font-medium text-white border border-indigo-400/30"
                         >
-                            Klicka för mer info
+                            {t.clickForMore}
                         </motion.div>
                     )}
                 </motion.div>
@@ -151,7 +156,7 @@ function ExpandableProjectCard({
                                 transition={{ delay: 0.3 }}
                             >
                                 <h4 className="text-lg font-semibold text-indigo-400 mb-3">
-                                    Om Projektet
+                                    {t.aboutProject}
                                 </h4>
                                 <p className="text-gray-300 leading-relaxed">
                                     {longDescription}
@@ -165,7 +170,7 @@ function ExpandableProjectCard({
                                 transition={{ delay: 0.4 }}
                             >
                                 <h4 className="text-lg font-semibold text-indigo-400 mb-3">
-                                    Teknologier
+                                    {t.technologies}
                                 </h4>
                                 <div className="flex flex-wrap gap-2">
                                     {tags.map((tag, index) => (
@@ -198,10 +203,9 @@ function ExpandableProjectCard({
                                             rel="noopener noreferrer"
                                             className="flex items-center gap-2 rounded-lg bg-gray-800/80 backdrop-blur-sm px-5 py-3 text-sm font-medium text-gray-300 transition-all duration-300 hover:bg-gray-700 hover:text-white border border-gray-700/50 hover:border-gray-600 hover:shadow-lg hover:shadow-gray-700/20"
                                             onClick={(e) => e.stopPropagation()}
-                                            aria-label={`Visa ${title} på GitHub`}
                                         >
                                             <FaGithub className="text-lg" />
-                                            <span>Visa på GitHub</span>
+                                            <span>{t.viewOnGithub}</span>
                                         </a>
                                     )}
 
@@ -213,12 +217,11 @@ function ExpandableProjectCard({
                                             rel="noopener noreferrer"
                                             className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 px-5 py-3 text-sm font-medium text-white transition-all duration-300 hover:from-indigo-500 hover:to-purple-500 hover:shadow-lg hover:shadow-indigo-500/30"
                                             onClick={(e) => e.stopPropagation()}
-                                            aria-label={`Visa live demo av ${title}`}
                                         >
                                             <FaPlay className="text-sm" />
-                                            <span>Se Live Demo</span>
+                                            <span>{t.liveDemo}</span>
                                         </a>
-                                    )} {/* <--- Här saknades denna måsvinge tidigare */}
+                                    )}
 
                                     {/* Videodemo-länk */}
                                     {videoUrl && (
@@ -228,10 +231,9 @@ function ExpandableProjectCard({
                                             rel="noopener noreferrer"
                                             className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-pink-600 to-rose-600 px-5 py-3 text-sm font-medium text-white transition-all duration-300 hover:from-pink-500 hover:to-rose-500 hover:shadow-lg hover:shadow-rose-500/30"
                                             onClick={(e) => e.stopPropagation()}
-                                            aria-label={`Visa videodemo av ${title}`}
                                         >
                                             <FaVideo className="text-sm" />
-                                            <span>Se Videodemo</span>
+                                            <span>{t.videoDemo}</span>
                                         </a>
                                     )}
                                 </div>

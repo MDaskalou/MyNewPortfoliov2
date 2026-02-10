@@ -1,0 +1,11 @@
+{
+  "language": {
+    "swedish": "Svenska",
+    "english": "English"
+  },
+  "aria": {
+    "showOnGithub": "View {{title}} on GitHub",
+    "liveDemo": "View live demo of {{title}}",
+    "videoDemo": "View video demo of {{title}}"
+  }
+}

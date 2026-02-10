@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { useContactTranslation } from '@/context/TranslationContext';
 
 export default function ContactSection() {
-    // Status-state för att hantera inskickningen
     const [status, setStatus] = useState<'IDLE' | 'SUBMITTING' | 'SUCCESS' | 'ERROR'>('IDLE');
+    const { t } = useContactTranslation();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -25,14 +26,21 @@ export default function ContactSection() {
 
             if (response.ok) {
                 setStatus('SUCCESS');
-                (e.target as HTMLFormElement).reset(); // Tömmer formuläret vid framgång
+                (e.target as HTMLFormElement).reset();
             } else {
                 setStatus('ERROR');
             }
-        } catch (error) {
+        } catch {
             setStatus('ERROR');
         }
     };
+
+    const contactItems = [
+        { icon: <FaEnvelope />, label: t.contactInfo.email.label, value: t.contactInfo.email.value, href: `mailto:${t.contactInfo.email.value}` },
+        { icon: <FaLinkedin />, label: t.contactInfo.linkedin.label, value: t.contactInfo.linkedin.value, href: 'https://www.linkedin.com/in/mikael-daskalou-46b424184/' },
+        { icon: <FaGithub />, label: t.contactInfo.github.label, value: t.contactInfo.github.value, href: 'https://github.com/mdaskalou' },
+        { icon: <FaMapMarkerAlt />, label: t.contactInfo.location.label, value: t.contactInfo.location.value, href: null },
+    ];
 
     return (
         <section id="kontakt" className="relative bg-gray-950 py-24 text-white overflow-hidden">
@@ -50,23 +58,17 @@ export default function ContactSection() {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                            Låt oss bygga något <br />
+                            {t.title.line1} <br />
                             <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                                fantastiskt tillsammans
+                                {t.title.line2}
                             </span>
                         </h2>
                         <p className="text-gray-400 text-lg mb-10 max-w-md">
-                            Jag är alltid öppen för nya möjligheter, spännande projekt eller bara ett trevligt samtal om teknik.
-                            Skicka ett meddelande så svarar jag så snart jag kan!
+                            {t.subtitle}
                         </p>
 
                         <div className="space-y-6">
-                            {[
-                                { icon: <FaEnvelope />, label: 'E-post', value: 'mikael.daskalou@hotmail.com', href: 'mailto:mikael.daskalou@hotmail.com' },
-                                { icon: <FaLinkedin />, label: 'LinkedIn', value: 'Mikael Daskalou', href: 'https://www.linkedin.com/in/mikael-daskalou-46b424184/' },
-                                { icon: <FaGithub />, label: 'GitHub', value: 'github.com/mdaskalou', href: 'https://github.com/mdaskalou' },
-                                { icon: <FaMapMarkerAlt />, label: 'Plats', value: 'Göteborg, Sverige', href: null },
-                            ].map((item, i) => (
+                            {contactItems.map((item, i) => (
                                 <div key={i} className="flex items-center gap-4 group">
                                     <div className="w-12 h-12 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-lg">
                                         {item.icon}
@@ -106,15 +108,15 @@ export default function ContactSection() {
                                     <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(34,197,94,0.2)]">
                                         <FaCheckCircle className="text-4xl" />
                                     </div>
-                                    <h3 className="text-2xl font-bold mb-2">Meddelande skickat!</h3>
+                                    <h3 className="text-2xl font-bold mb-2">{t.success.title}</h3>
                                     <p className="text-gray-400 max-w-xs mx-auto mb-8">
-                                        Tack för att du hörde av dig, Mikael återkommer till dig så snart som möjligt.
+                                        {t.success.message}
                                     </p>
                                     <button
                                         onClick={() => setStatus('IDLE')}
                                         className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
                                     >
-                                        Skicka ett till meddelande
+                                        {t.success.sendAnother}
                                     </button>
                                 </motion.div>
                             ) : (
@@ -127,51 +129,51 @@ export default function ContactSection() {
                                 >
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
-                                            <label className="text-sm font-medium text-gray-400 ml-1">Namn</label>
+                                            <label className="text-sm font-medium text-gray-400 ml-1">{t.form.name.label}</label>
                                             <input
                                                 required
                                                 name="name"
                                                 type="text"
                                                 className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all"
-                                                placeholder="Ditt namn"
+                                                placeholder={t.form.name.placeholder}
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-sm font-medium text-gray-400 ml-1">E-post</label>
+                                            <label className="text-sm font-medium text-gray-400 ml-1">{t.form.email.label}</label>
                                             <input
                                                 required
                                                 name="email"
                                                 type="email"
                                                 className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all"
-                                                placeholder="din@epost.se"
+                                                placeholder={t.form.email.placeholder}
                                             />
                                         </div>
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium text-gray-400 ml-1">Ämne</label>
+                                        <label className="text-sm font-medium text-gray-400 ml-1">{t.form.subject.label}</label>
                                         <input
                                             required
                                             name="subject"
                                             type="text"
                                             className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all"
-                                            placeholder="Vad gäller det?"
+                                            placeholder={t.form.subject.placeholder}
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium text-gray-400 ml-1">Meddelande</label>
+                                        <label className="text-sm font-medium text-gray-400 ml-1">{t.form.message.label}</label>
                                         <textarea
                                             required
                                             name="message"
                                             rows={4}
                                             className="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all resize-none"
-                                            placeholder="Hej Mikael, jag skulle vilja..."
+                                            placeholder={t.form.message.placeholder}
                                         />
                                     </div>
 
                                     {status === 'ERROR' && (
                                         <div className="flex items-center gap-2 text-red-400 text-sm bg-red-400/10 p-3 rounded-lg border border-red-400/20">
                                             <FaExclamationCircle />
-                                            <span>Något gick fel. Försök igen eller skicka ett direkt-mail.</span>
+                                            <span>{t.form.error}</span>
                                         </div>
                                     )}
 
@@ -185,7 +187,7 @@ export default function ContactSection() {
                                         ) : (
                                             <>
                                                 <FaPaperPlane className="text-sm" />
-                                                <span>Skicka meddelande</span>
+                                                <span>{t.form.submit}</span>
                                             </>
                                         )}
                                     </button>

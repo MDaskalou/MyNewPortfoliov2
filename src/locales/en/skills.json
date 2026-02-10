@@ -1,0 +1,26 @@
+{
+  "title": "My Skills",
+  "subtitle": "A combination of technical skills and soft skills that drive me forward",
+  "categories": {
+    "backend": {
+      "title": "Backend",
+      "skills": ["C#", ".NET 6", "ASP.NET Core", "Entity Framework", "REST API"]
+    },
+    "frontend": {
+      "title": "Frontend",
+      "skills": ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS"]
+    },
+    "other": {
+      "title": "Other",
+      "skills": ["SQL Server", "Git", "GitHub", "Azure (Basic)"]
+    },
+    "softSkills": {
+      "title": "Soft Skills",
+      "skills": ["Problem-solving", "Teamwork", "Agile Methodology", "Communication", "Self-driven"]
+    }
+  },
+  "cta": {
+    "text": "Want to see how I apply these skills?",
+    "button": "See my projects"
+  }
+}

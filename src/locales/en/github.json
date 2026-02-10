@@ -1,0 +1,29 @@
+{
+  "title": "Commitment & Consistency",
+  "subtitle": "See my latest contribution activity and top languages on GitHub",
+  "graphTypes": {
+    "activity": "Activity Graph",
+    "streak": "Streak Stats",
+    "simple": "Simple Chart"
+  },
+  "contributionActivity": "Contribution Activity",
+  "topLanguages": "Top Languages",
+  "errorLoading": "Could not load graph",
+  "checkConnection": "Check your internet connection",
+  "basedOnActivity": "Based on recent activity in public repos",
+  "stats": {
+    "consistentContributions": {
+      "label": "Consistent contributions",
+      "value": "Daily activity"
+    },
+    "activeProjects": {
+      "label": "Active projects",
+      "value": "Portfolio & More"
+    },
+    "mainLanguages": {
+      "label": "Main languages",
+      "value": "C# & TypeScript"
+    }
+  },
+  "visitProfile": "Visit my GitHub profile"
+}

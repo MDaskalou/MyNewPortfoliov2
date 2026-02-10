@@ -1,0 +1,27 @@
+{
+  "title": "Mina Projekt",
+  "subtitle": "En samling av projekt som visar mina färdigheter inom fullstack-utveckling",
+  "clickForMore": "Klicka för mer info",
+  "aboutProject": "Om Projektet",
+  "technologies": "Teknologier",
+  "viewOnGithub": "Visa på GitHub",
+  "liveDemo": "Se Live Demo",
+  "videoDemo": "Se Videodemo",
+  "items": [
+    {
+      "title": "Next.js, React och Tailwind CSS.NET",
+      "description": "Mitt första officiella hemsida byggd med Next.js, React och Tailwind CSS. Hemsidan är byggd för en dansskola och inkluderar anpassade sektioner för klasser, instruktörer och anmälningar.",
+      "longDescription": "Detta projekt var mitt första större försök att bygga en modern responsiv hemsida från grunden med Next.js och Tailwind CSS."
+    },
+    {
+      "title": "Hemsida för StudieTeknik",
+      "description": "Detta är en hemsida för en studieplattform som hjälper studenter att förbättra sina studietekniker. Byggd med C# .Net för backend och Next.js för frontend med Tailwind CSS för styling samt SQL databas.",
+      "longDescription": "Detta är ett fullstack-projekt där jag byggde både backend och frontend. Backend är utvecklad med C# .Net och hanterar användarautentisering, kursdata och AI-integration för att hjälpa elever att hjälpa eleverna att strukturera och effektivisera sina studier. Frontend är byggd med Next.js och Tailwind CSS för att skapa en snabb och responsiv användarupplevelse."
+    },
+    {
+      "title": "Portfolio (Denna sida)",
+      "description": "Min personliga portfolio, byggd från grunden med Next.js, React och Tailwind CSS.",
+      "longDescription": "Sidan du tittar på just nu. Byggd för att visa upp mina färdigheter inom modern frontend-utveckling med Next.js för prestanda och SEO, Tailwind CSS för snabb och flexibel styling, och Framer Motion för smidiga animationer. Koden är fullt typad med TypeScript och följer moderna best practices. Swiper används för en smidig projektvisning och hela sidan är optimerad för alla enheter."
+    }
+  ]
+}

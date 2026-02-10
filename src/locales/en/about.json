@@ -1,0 +1,15 @@
+{
+  "title": "Who am I?",
+  "statusLabel": "Status",
+  "statusValue": "Looking for internship / Job",
+  "subtitle": "From educator to developer",
+  "paragraphs": [
+    "I'm studying system development at <strong>NBI/Handelsakademin</strong> in Gothenburg. With a solid foundation in <em>C# .NET</em> and relational databases, I build robust backend logic, but my passion doesn't stop there.",
+    "Through self-study, I've embraced the modern frontend stack. Currently, I'm creating fast, responsive web solutions with <strong>Next.js, TypeScript and Tailwind CSS</strong>. For me, development is about understanding the big picture - from database architecture to user experience."
+  ],
+  "hybridSkill": {
+    "title": "Hybrid Skillset",
+    "description": "My years as a <strong>high school teacher</strong> and <strong>entrepreneur</strong> have given me a unique ability to structure complex problems, communicate solutions and drive projects forward with a business-oriented mindset."
+  },
+  "focusAreas": "Current focus areas:"
+}

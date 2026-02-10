@@ -1,0 +1,50 @@
+{
+  "title": {
+    "line1": "Låt oss bygga något",
+    "line2": "fantastiskt tillsammans"
+  },
+  "subtitle": "Jag är alltid öppen för nya möjligheter, spännande projekt eller bara ett trevligt samtal om teknik. Skicka ett meddelande så svarar jag så snart jag kan!",
+  "contactInfo": {
+    "email": {
+      "label": "E-post",
+      "value": "mikael.daskalou@hotmail.com"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "value": "Mikael Daskalou"
+    },
+    "github": {
+      "label": "GitHub",
+      "value": "github.com/mdaskalou"
+    },
+    "location": {
+      "label": "Plats",
+      "value": "Göteborg, Sverige"
+    }
+  },
+  "form": {
+    "name": {
+      "label": "Namn",
+      "placeholder": "Ditt namn"
+    },
+    "email": {
+      "label": "E-post",
+      "placeholder": "din@epost.se"
+    },
+    "subject": {
+      "label": "Ämne",
+      "placeholder": "Vad gäller det?"
+    },
+    "message": {
+      "label": "Meddelande",
+      "placeholder": "Hej Mikael, jag skulle vilja..."
+    },
+    "submit": "Skicka meddelande",
+    "error": "Något gick fel. Försök igen eller skicka ett direkt-mail."
+  },
+  "success": {
+    "title": "Meddelande skickat!",
+    "message": "Tack för att du hörde av dig, Mikael återkommer till dig så snart som möjligt.",
+    "sendAnother": "Skicka ett till meddelande"
+  }
+}

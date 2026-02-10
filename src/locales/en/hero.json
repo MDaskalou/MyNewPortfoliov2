@@ -1,0 +1,15 @@
+{
+  "badge": "Available for new opportunities",
+  "greeting": "Hi, I'm",
+  "name": "Mikael Daskalou",
+  "typeAnimation": [
+    "System Developer C# .NET",
+    "Passionate Frontend Developer",
+    "Creating modern web experiences"
+  ],
+  "cta": {
+    "projects": "See my projects",
+    "contact": "Contact me"
+  },
+  "scrollIndicator": "Scroll"
+}

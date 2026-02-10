@@ -1,0 +1,15 @@
+{
+  "badge": "Tillgänglig för nya möjligheter",
+  "greeting": "Hej, jag är",
+  "name": "Mikael Daskalou",
+  "typeAnimation": [
+    "Systemutvecklare C# .NET",
+    "Passionerad Frontend-utvecklare",
+    "Skapar moderna webbupplevelser"
+  ],
+  "cta": {
+    "projects": "Se mina projekt",
+    "contact": "Kontakta mig"
+  },
+  "scrollIndicator": "Scrolla"
+}

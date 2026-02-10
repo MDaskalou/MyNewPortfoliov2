@@ -3,14 +3,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaChartBar, FaFire, FaCalendar } from 'react-icons/fa';
+import { useGithubTranslation } from '@/context/TranslationContext';
 
 const GITHUB_USERNAME = 'mdaskalou';
 
 export default function GitHubSection() {
     const [graphType, setGraphType] = useState('activity');
     const [imageError, setImageError] = useState(false);
+    const { t } = useGithubTranslation();
 
-    const languageStatsUrl = `https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=${GITHUB_USERNAME}&theme=dark&hide_border=true&layout=compact&bg_color=0d1117&title_color=a78bfa&text_color=c9d1d9&icon_color=a78bfa&langs_count=8`;    const streakStatsUrl = `https://streak-stats.demolab.com?user=${GITHUB_USERNAME}&theme=dark&hide_border=true&background=0d1117&ring=a78bfa&fire=c084fc&currStreakLabel=a78bfa`;
+    const streakStatsUrl = `https://streak-stats.demolab.com?user=${GITHUB_USERNAME}&theme=dark&hide_border=true&background=0d1117&ring=a78bfa&fire=c084fc&currStreakLabel=a78bfa`;
     const simpleChartUrl = `https://ghchart.rshah.org/8b5cf6/${GITHUB_USERNAME}`;
     const activityGraphUrl = `https://github-readme-activity-graph.vercel.app/graph?username=${GITHUB_USERNAME}&theme=react-dark&hide_border=true&area=true&bg_color=0d1117&color=a78bfa&line=8b5cf6&point=c084fc`;
 
@@ -25,9 +27,15 @@ export default function GitHubSection() {
     };
 
     const graphOptions = [
-        { id: 'activity', label: 'Activity Graph', icon: FaChartBar },
-        { id: 'streak', label: 'Streak Stats', icon: FaFire },
-        { id: 'simple', label: 'Simple Chart', icon: FaCalendar },
+        { id: 'activity', label: t.graphTypes.activity, icon: FaChartBar },
+        { id: 'streak', label: t.graphTypes.streak, icon: FaFire },
+        { id: 'simple', label: t.graphTypes.simple, icon: FaCalendar },
+    ];
+
+    const statsData = [
+        { label: t.stats.consistentContributions.label, value: t.stats.consistentContributions.value, icon: '📅' },
+        { label: t.stats.activeProjects.label, value: t.stats.activeProjects.value, icon: '🚀' },
+        { label: t.stats.mainLanguages.label, value: t.stats.mainLanguages.value, icon: '💻' },
     ];
 
     return (
@@ -61,10 +69,10 @@ export default function GitHubSection() {
                         <FaGithub className="text-3xl text-white" />
                     </div>
                     <h2 className="mb-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                        Engagemang & Kontinuitet
+                        {t.title}
                     </h2>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Se min senaste bidragsaktivitet och mina toppspråk på GitHub
+                        {t.subtitle}
                     </p>
                 </motion.div>
 
@@ -113,15 +121,15 @@ export default function GitHubSection() {
                         <div className="relative z-10">
                             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                                 <span className="inline-block w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>
-                                Bidragsaktivitet
+                                {t.contributionActivity}
                             </h3>
 
                             <div className="flex justify-center items-center min-h-[300px] bg-black/20 rounded-lg p-4">
                                 {imageError ? (
                                     <div className="text-center py-12">
                                         <FaGithub className="text-6xl text-gray-700 mx-auto mb-4" />
-                                        <p className="text-red-400 mb-2">Kunde inte ladda graf</p>
-                                        <p className="text-gray-500 text-sm">Kontrollera internetanslutningen</p>
+                                        <p className="text-red-400 mb-2">{t.errorLoading}</p>
+                                        <p className="text-gray-500 text-sm">{t.checkConnection}</p>
                                     </div>
                                 ) : (
                                     <img
@@ -136,7 +144,6 @@ export default function GitHubSection() {
                     </motion.div>
 
                     {/* Language Stats */}
-                    {/* Language Stats - Custom Native Version */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -149,7 +156,7 @@ export default function GitHubSection() {
                         <div className="relative z-10">
                             <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                                 <span className="inline-block w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>
-                                Toppspråk
+                                {t.topLanguages}
                             </h3>
 
                             <div className="space-y-6">
@@ -177,7 +184,7 @@ export default function GitHubSection() {
                             </div>
 
                             <p className="mt-8 text-xs text-gray-500 italic text-center">
-                                Baserat på senaste aktivitet i publika repon
+                                {t.basedOnActivity}
                             </p>
                         </div>
                     </motion.div>
@@ -191,11 +198,7 @@ export default function GitHubSection() {
                     transition={{ duration: 0.6, delay: 0.5 }}
                     className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6"
                 >
-                    {[
-                        { label: 'Konsekvent bidrag', value: 'Daglig aktivitet', icon: '📅' },
-                        { label: 'Aktiva projekt', value: 'Portfolio & Mer', icon: '🚀' },
-                        { label: 'Huvudspråk', value: 'C# & TypeScript', icon: '💻' },
-                    ].map((stat, index) => (
+                    {statsData.map((stat) => (
                         <div
                             key={stat.label}
                             className="rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 p-6 border border-gray-800 hover:border-indigo-500/50 transition-all duration-300 group"
@@ -222,7 +225,7 @@ export default function GitHubSection() {
                         className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-indigo-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/40 hover:scale-105"
                     >
                         <FaGithub className="text-xl" />
-                        Besök min GitHub-profil
+                        {t.visitProfile}
                         <motion.span
                             animate={{ x: [0, 5, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}

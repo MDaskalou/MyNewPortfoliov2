@@ -1,0 +1,27 @@
+{
+  "title": "My Projects",
+  "subtitle": "A collection of projects showcasing my full-stack development skills",
+  "clickForMore": "Click for more info",
+  "aboutProject": "About the Project",
+  "technologies": "Technologies",
+  "viewOnGithub": "View on GitHub",
+  "liveDemo": "See Live Demo",
+  "videoDemo": "Watch Video Demo",
+  "items": [
+    {
+      "title": "Next.js, React and Tailwind CSS.NET",
+      "description": "My first official website built with Next.js, React and Tailwind CSS. The website is built for a dance school and includes custom sections for classes, instructors and registrations.",
+      "longDescription": "This project was my first major attempt at building a modern responsive website from scratch with Next.js and Tailwind CSS."
+    },
+    {
+      "title": "Website for StudyTechnique",
+      "description": "This is a website for a study platform that helps students improve their study techniques. Built with C# .Net for backend and Next.js for frontend with Tailwind CSS for styling and SQL database.",
+      "longDescription": "This is a full-stack project where I built both backend and frontend. The backend is developed with C# .Net and handles user authentication, course data and AI integration to help students structure and streamline their studies. The frontend is built with Next.js and Tailwind CSS to create a fast and responsive user experience."
+    },
+    {
+      "title": "Portfolio (This page)",
+      "description": "My personal portfolio, built from scratch with Next.js, React and Tailwind CSS.",
+      "longDescription": "The page you're looking at right now. Built to showcase my skills in modern frontend development with Next.js for performance and SEO, Tailwind CSS for fast and flexible styling, and Framer Motion for smooth animations. The code is fully typed with TypeScript and follows modern best practices. Swiper is used for smooth project display and the entire site is optimized for all devices."
+    }
+  ]
+}

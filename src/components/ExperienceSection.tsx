@@ -3,62 +3,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGraduationCap, FaBriefcase, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { useExperienceTranslation } from '@/context/TranslationContext';
 
 type TimelineItem = {
     title: string;
     location: string;
     date: string;
     description: string;
-    current?: boolean; // För att visa den pulserande pricken
+    current?: boolean;
 };
 
-const educationData: TimelineItem[] = [
-    {
-        title: 'Systemutvecklare .NET',
-        location: 'NBI/Handelsakademin, Göteborg',
-        date: 'Aug 2023 - Jun 2025',
-        description: 'Backend-fokus med C#, .NET och API-utveckling. Frontend med Angular & React. Inkluderar djupdykning i SQL-databaser, testdriven utveckling (TDD) och agila metoder som Scrum.',
-        current: true,
-    },
-    {
-        title: 'Lärarexamen',
-        location: 'Göteborgs universitet',
-        date: 'Sep 2014 — Maj 2019',
-        description: 'Gymnasielärarexamen med inriktning på Religionskunskap och Idrott och hälsa. Utbildningen lade grunden för mitt pedagogiska ledarskap och förmågan att strukturera komplex information.',
-    },
-];
-
-const workData: TimelineItem[] = [
-    {
-        title: 'LIA 1 - Systemutvecklare',
-        location: 'Monkey Solution AB',
-        date: 'Sep - Nov 2024',
-        description: 'Utveckling av en lärplattform för studieteknik. Arbetade i en fullstack-miljö med C# .NET Core, React och SQL Server. Implementerade AI-stöd för att personifiera elevens inlärningsresa.',
-    },
-
-    {
-        title: 'Egenföretagare',
-        location: 'Fuego Dance School',
-        date: 'Aug 2021 - Nuvarande',
-        description: 'Grundat och drivit dansskola. Ansvarar för allt från digital marknadsföring och kundrelationer till operativ planering och genomförande av event.',
-        current: true,
-    },
-    {
-        title: 'Vårdbiträde',
-        location: 'Sahlgrenska Universitetssjukhuset',
-        date: 'Jun 2025 - Nuvarande',
-        description: 'Arbetar extra inom psykiatrin avdelningen i Sahlgrenska sjukhus.',
-    },
-    {
-        title: 'Gymnasielärare',
-        location: 'Drottning Blanka Gymnasium',
-        date: 'Aug 2019 — Jun 2024',
-        description: 'Ansvarig för undervisning och mentorskap. Utvecklade stark kommunikationsförmåga och erfarenhet av att leda grupper i en högpresterande miljö.',
-    }
-];
-
 // --- Underkomponent: TimelineCard ---
-const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) => {
+const TimelineCard = ({ item, index, readMore, showLess }: { item: TimelineItem; index: number; readMore: string; showLess: string }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const isLongText = item.description.length > 100;
 
@@ -100,9 +56,9 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
                         className="mt-3 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-indigo-400 hover:text-indigo-300 transition-colors"
                     >
                         {isExpanded ? (
-                            <>Visa mindre <FaChevronUp /></>
+                            <>{showLess} <FaChevronUp /></>
                         ) : (
-                            <>Läs mer <FaChevronDown /></>
+                            <>{readMore} <FaChevronDown /></>
                         )}
                     </button>
                 )}
@@ -114,14 +70,32 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
 // --- Huvudkomponent ---
 export default function ExperienceSection() {
     const [activeTab, setActiveTab] = useState<'edu' | 'work'>('work');
+    const { t } = useExperienceTranslation();
+
+    // Get data from translations
+    const educationData: TimelineItem[] = t.education.map((item: { title: string; location: string; date: string; description: string; current?: boolean }) => ({
+        title: item.title,
+        location: item.location,
+        date: item.date,
+        description: item.description,
+        current: item.current,
+    }));
+
+    const workData: TimelineItem[] = t.work.map((item: { title: string; location: string; date: string; description: string; current?: boolean }) => ({
+        title: item.title,
+        location: item.location,
+        date: item.date,
+        description: item.description,
+        current: item.current,
+    }));
 
     return (
         <section id="erfarenhet" className="bg-gray-950 py-24 text-white overflow-hidden">
             <div className="container mx-auto max-w-4xl px-6">
 
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Min Resa</h2>
-                    <p className="text-gray-400">Från pedagogiskt ledarskap till teknisk innovation.</p>
+                    <h2 className="text-4xl md:text-5xl font-extrabold mb-4">{t.title}</h2>
+                    <p className="text-gray-400">{t.subtitle}</p>
                 </div>
 
                 {/* Tab Navigation */}
@@ -137,7 +111,7 @@ export default function ExperienceSection() {
                                 <motion.div layoutId="activeTab" className="absolute inset-0 bg-indigo-600 rounded-lg shadow-lg shadow-indigo-500/20" />
                             )}
                             <span className="relative z-10 flex items-center gap-2">
-                                <FaBriefcase /> Arbetsliv
+                                <FaBriefcase /> {t.tabs.work}
                             </span>
                         </button>
                         <button
@@ -150,7 +124,7 @@ export default function ExperienceSection() {
                                 <motion.div layoutId="activeTab" className="absolute inset-0 bg-indigo-600 rounded-lg shadow-lg shadow-indigo-500/20" />
                             )}
                             <span className="relative z-10 flex items-center gap-2">
-                                <FaGraduationCap /> Utbildning
+                                <FaGraduationCap /> {t.tabs.education}
                             </span>
                         </button>
                     </div>
@@ -171,7 +145,13 @@ export default function ExperienceSection() {
                             className="space-y-4"
                         >
                             {(activeTab === 'work' ? workData : educationData).map((item, index) => (
-                                <TimelineCard key={item.title + index} item={item} index={index} />
+                                <TimelineCard
+                                    key={item.title + index}
+                                    item={item}
+                                    index={index}
+                                    readMore={t.readMore}
+                                    showLess={t.showLess}
+                                />
                             ))}
                         </motion.ul>
                     </AnimatePresence>

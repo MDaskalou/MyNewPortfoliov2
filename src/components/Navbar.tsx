@@ -5,22 +5,24 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-
-const navLinks = [
-    { name: 'Hem', href: '#hem' },
-    { name: 'Projekt', href: '#projekt' },
-    { name: 'Om mig', href: '#om-mig' },
-    { name: 'Kunskaper', href: '#kunskaper' },
-    { name: 'Erfarenhet', href: '#erfarenhet' },
-];
+import LanguageSwitcher from './LanguageSwitcher';
+import { useNavbarTranslation } from '@/context/TranslationContext';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { t } = useNavbarTranslation();
+
+    const navLinks = [
+        { name: t.links.home, href: '#hem' },
+        { name: t.links.projects, href: '#projekt' },
+        { name: t.links.about, href: '#om-mig' },
+        { name: t.links.skills, href: '#kunskaper' },
+        { name: t.links.experience, href: '#erfarenhet' },
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
-            // Vi sänker tröskeln till 20px så att bakgrunden aktiveras direkt när man börjar skrolla
             setScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
@@ -54,18 +56,20 @@ export default function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="relative text-sm font-medium text-gray-300 transition-colors hover:text-white group"
+                            className="relative text-base font-medium text-gray-300 transition-colors hover:text-white group"
                         >
                             {link.name}
                             <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-indigo-500 transition-all group-hover:w-full" />
                         </Link>
                     ))}
 
+                    <LanguageSwitcher variant="compact" />
+
                     <Link
                         href="#kontakt"
                         className="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-bold text-white transition-all duration-300 bg-indigo-600 rounded-full hover:bg-indigo-700 group shadow-lg shadow-indigo-500/25"
                     >
-                        <span className="relative">Anlita mig</span>
+                        <span className="relative">{t.cta}</span>
                     </Link>
                 </div>
 
@@ -134,13 +138,23 @@ export default function Navbar() {
                                     onClick={() => setIsOpen(false)}
                                     className="flex items-center justify-center w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 py-5 text-xl font-bold text-white shadow-xl shadow-indigo-500/20"
                                 >
-                                    Anlita mig
+                                    {t.cta}
                                 </Link>
+                            </motion.div>
+
+                            {/* Language switcher in mobile menu */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: (navLinks.length + 1) * 0.1 }}
+                                className="pt-4"
+                            >
+                                <LanguageSwitcher variant="default" />
                             </motion.div>
                         </div>
 
                         <div className="p-10 text-center border-t border-white/5">
-                            <p className="text-gray-500 text-sm mb-4">© 2026 Mikael Daskalou</p>
+                            <p className="text-gray-500 text-sm mb-4">{t.copyright}</p>
                             <div className="flex justify-center gap-6 text-2xl text-gray-400">
                                 <a href="https://github.com/mdaskalou" target="_blank" rel="noreferrer" className="hover:text-white transition-colors"><FaGithub /></a>
                                 <a href="https://www.linkedin.com/in/mikael-daskalou-46b424184/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors"><FaLinkedin /></a>

@@ -1,0 +1,26 @@
+{
+  "title": "Mina Kompetenser",
+  "subtitle": "En kombination av tekniska färdigheter och mjuka förmågor som driver mig framåt",
+  "categories": {
+    "backend": {
+      "title": "Backend",
+      "skills": ["C#", ".NET 6", "ASP.NET Core", "Entity Framework", "REST API"]
+    },
+    "frontend": {
+      "title": "Frontend",
+      "skills": ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS"]
+    },
+    "other": {
+      "title": "Övrigt",
+      "skills": ["SQL Server", "Git", "GitHub", "Azure (Grundläggande)"]
+    },
+    "softSkills": {
+      "title": "Mjuka Förmågor",
+      "skills": ["Problemlösning", "Teamarbete", "Agil Metodik", "Kommunikation", "Självgående"]
+    }
+  },
+  "cta": {
+    "text": "Vill du se hur jag tillämpar dessa färdigheter?",
+    "button": "Se mina projekt"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Engagemang & Kontinuitet",
+  "subtitle": "Se min senaste bidragsaktivitet och mina toppspråk på GitHub",
+  "graphTypes": {
+    "activity": "Activity Graph",
+    "streak": "Streak Stats",
+    "simple": "Simple Chart"
+  },
+  "contributionActivity": "Bidragsaktivitet",
+  "topLanguages": "Toppspråk",
+  "errorLoading": "Kunde inte ladda graf",
+  "checkConnection": "Kontrollera internetanslutningen",
+  "basedOnActivity": "Baserat på senaste aktivitet i publika repon",
+  "stats": {
+    "consistentContributions": {
+      "label": "Konsekvent bidrag",
+      "value": "Daglig aktivitet"
+    },
+    "activeProjects": {
+      "label": "Aktiva projekt",
+      "value": "Portfolio & Mer"
+    },
+    "mainLanguages": {
+      "label": "Huvudspråk",
+      "value": "C# & TypeScript"
+    }
+  },
+  "visitProfile": "Besök min GitHub-profil"
+}

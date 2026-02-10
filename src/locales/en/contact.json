@@ -1,0 +1,50 @@
+{
+  "title": {
+    "line1": "Let's build something",
+    "line2": "amazing together"
+  },
+  "subtitle": "I'm always open to new opportunities, exciting projects or just a nice conversation about tech. Send a message and I'll get back to you as soon as I can!",
+  "contactInfo": {
+    "email": {
+      "label": "Email",
+      "value": "mikael.daskalou@hotmail.com"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "value": "Mikael Daskalou"
+    },
+    "github": {
+      "label": "GitHub",
+      "value": "github.com/mdaskalou"
+    },
+    "location": {
+      "label": "Location",
+      "value": "Gothenburg, Sweden"
+    }
+  },
+  "form": {
+    "name": {
+      "label": "Name",
+      "placeholder": "Your name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "your@email.com"
+    },
+    "subject": {
+      "label": "Subject",
+      "placeholder": "What is it about?"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Hi Mikael, I would like to..."
+    },
+    "submit": "Send message",
+    "error": "Something went wrong. Please try again or send a direct email."
+  },
+  "success": {
+    "title": "Message sent!",
+    "message": "Thank you for reaching out, Mikael will get back to you as soon as possible.",
+    "sendAnother": "Send another message"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "links": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience"
+  },
+  "cta": "Hire me",
+  "copyright": "© 2026 Mikael Daskalou"
+}

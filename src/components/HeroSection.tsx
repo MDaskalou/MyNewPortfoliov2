@@ -5,8 +5,14 @@ import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 import { FaGithub, FaLinkedin, FaArrowDown } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useHeroTranslation } from '@/context/TranslationContext';
 
 export default function HeroSection() {
+    const { t, locale } = useHeroTranslation();
+
+    // Build type animation sequence based on current locale
+    const typeSequence = t.typeAnimation.flatMap((text: string) => [text, 2000]);
+
     return (
         <section
             id="hem"
@@ -46,26 +52,23 @@ export default function HeroSection() {
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
                                 </span>
-                                Tillgänglig för nya möjligheter
+                                {t.badge}
                             </span>
                         </div>
 
                         {/* Main heading - Justerad storlek för mobil */}
                         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl mb-4">
-                            <span className="block text-white text-3xl sm:text-5xl lg:text-6xl">Hej, jag är</span>
+                            <span className="block text-white text-3xl sm:text-5xl lg:text-6xl">{t.greeting}</span>
                             <span className="block bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent pb-2">
-                                Mikael Daskalou
+                                {t.name}
                             </span>
                         </h1>
 
                         {/* Typing animation - Justerad min-höjd för mobil */}
                         <div className="min-h-[60px] md:min-h-[80px]">
                             <TypeAnimation
-                                sequence={[
-                                    'Systemutvecklare C# .NET', 2000,
-                                    'Passionerad Frontend-utvecklare', 2000,
-                                    'Skapar moderna webbupplevelser', 2000,
-                                ]}
+                                key={locale}
+                                sequence={typeSequence}
                                 wrapper="p"
                                 speed={50}
                                 className="text-lg md:text-2xl text-gray-300 leading-relaxed"
@@ -79,13 +82,13 @@ export default function HeroSection() {
                                 href="#projekt"
                                 className="w-full sm:w-auto text-center rounded-xl bg-indigo-600 px-8 py-4 text-base font-bold text-white shadow-lg shadow-indigo-500/25 hover:bg-indigo-500 transition-all active:scale-95"
                             >
-                                Se mina projekt
+                                {t.cta.projects}
                             </Link>
                             <Link
                                 href="#kontakt"
                                 className="w-full sm:w-auto text-center rounded-xl bg-white/5 backdrop-blur-sm px-8 py-4 text-base font-bold text-white border border-white/10 hover:bg-white/10 transition-all active:scale-95"
                             >
-                                Kontakta mig
+                                {t.cta.contact}
                             </Link>
                         </div>
 
@@ -142,7 +145,7 @@ export default function HeroSection() {
                     transition={{ duration: 2, repeat: Infinity }}
                     className="flex flex-col items-center gap-2 text-gray-500"
                 >
-                    <span className="text-xs uppercase tracking-widest">Scrolla</span>
+                    <span className="text-xs uppercase tracking-widest">{t.scrollIndicator}</span>
                     <FaArrowDown className="text-indigo-500" />
                 </motion.div>
             </div>

@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaCode, FaServer, FaLightbulb, FaRocket } from 'react-icons/fa';
+import { useAboutTranslation } from '@/context/TranslationContext';
 
 // Snabb-badges för tekniker du nämner i texten
 const techStack = [
@@ -15,6 +16,8 @@ const techStack = [
 ];
 
 export default function AboutMeSection() {
+    const { t } = useAboutTranslation();
+
     return (
         <section id="om-mig" className="bg-gray-950 py-24 text-white overflow-hidden">
             <div className="container mx-auto max-w-6xl px-6">
@@ -27,14 +30,13 @@ export default function AboutMeSection() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
-                        Vem är jag?
+                        {t.title}
                     </h2>
                     <div className="h-1 w-20 bg-indigo-600 mx-auto rounded-full" />
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
-                    {/* --- BILD-KOLUMN --- */}
                     {/* --- BILD-KOLUMN --- */}
                     <motion.div
                         className="lg:col-span-5 flex justify-center"
@@ -64,8 +66,8 @@ export default function AboutMeSection() {
                                             <FaRocket className="text-indigo-400 text-xl" />
                                         </div>
                                         <div>
-                                            <p className="text-xs text-gray-400 uppercase font-bold tracking-widest">Status</p>
-                                            <p className="text-sm font-semibold">Söker LIA 2 / Jobb</p>
+                                            <p className="text-xs text-gray-400 uppercase font-bold tracking-widest">{t.statusLabel}</p>
+                                            <p className="text-sm font-semibold">{t.statusValue}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -83,35 +85,24 @@ export default function AboutMeSection() {
                         <div className="space-y-6 text-gray-300 leading-relaxed">
                             <h3 className="text-2xl font-bold text-white flex items-center gap-2">
                                 <span className="text-indigo-500 text-3xl">/</span>
-                                Från pedagog till utvecklare
+                                {t.subtitle}
                             </h3>
 
-                            <p className="text-lg">
-                                Jag studerar systemutveckling vid <span className="text-white font-semibold">NBI/Handelsakademin</span> i Göteborg.
-                                Med en stabil grund i <span className="text-indigo-400 font-medium italic">C# .NET</span> och relationsdatabaser
-                                bygger jag robust backend-logik, men min passion stannar inte där.
-                            </p>
+                            <p className="text-lg" dangerouslySetInnerHTML={{ __html: t.paragraphs[0] }} />
 
-                            <p className="text-lg">
-                                Genom självstudier har jag omfamnat den moderna frontend-stacken. Just nu skapar jag snabba,
-                                responsiva webblösningar med <span className="text-white font-medium">Next.js, TypeScript och Tailwind CSS</span>.
-                                För mig handlar utveckling om att förstå helheten – från databasarkitektur till användarupplevelse.
-                            </p>
+                            <p className="text-lg" dangerouslySetInnerHTML={{ __html: t.paragraphs[1] }} />
 
                             <div className="bg-gray-900/50 border border-gray-800 p-6 rounded-2xl">
                                 <h4 className="text-sm uppercase tracking-[0.2em] font-bold text-indigo-400 mb-4 flex items-center gap-2">
-                                    <FaLightbulb className="animate-bounce" /> Hybrid-kompetens
+                                    <FaLightbulb className="animate-bounce" /> {t.hybridSkill.title}
                                 </h4>
-                                <p className="text-sm text-gray-400">
-                                    Mina år som <span className="text-gray-200">gymnasielärare</span> och <span className="text-gray-200">egenföretagare</span> har gett mig
-                                    en unik förmåga att strukturera komplexa problem, kommunicera lösningar och driva projekt framåt med ett affärsmässigt tänk.
-                                </p>
+                                <p className="text-sm text-gray-400" dangerouslySetInnerHTML={{ __html: t.hybridSkill.description }} />
                             </div>
                         </div>
 
                         {/* Teknik-badges */}
                         <div>
-                            <p className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">Fokusområden just nu:</p>
+                            <p className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">{t.focusAreas}</p>
                             <div className="flex flex-wrap gap-3">
                                 {techStack.map((tech) => (
                                     <span

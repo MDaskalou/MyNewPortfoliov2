@@ -1,0 +1,52 @@
+{
+  "title": "My Journey",
+  "subtitle": "From educational leadership to technical innovation.",
+  "tabs": {
+    "work": "Work",
+    "education": "Education"
+  },
+  "readMore": "Read more",
+  "showLess": "Show less",
+  "education": [
+    {
+      "title": "System Developer .NET",
+      "location": "NBI/Handelsakademin, Gothenburg",
+      "date": "Aug 2023 - Jun 2025",
+      "description": "Backend focus with C#, .NET and API development. Frontend with Angular & React. Includes deep dive into SQL databases, test-driven development (TDD) and agile methods like Scrum.",
+      "current": true
+    },
+    {
+      "title": "Teaching Degree",
+      "location": "University of Gothenburg",
+      "date": "Sep 2014 — May 2019",
+      "description": "High school teaching degree specializing in Religious Studies and Physical Education. The education laid the foundation for my pedagogical leadership and ability to structure complex information."
+    }
+  ],
+  "work": [
+    {
+      "title": "Internship 1 - System Developer",
+      "location": "Monkey Solution AB",
+      "date": "Sep - Nov 2024",
+      "description": "Development of a learning platform for study techniques. Worked in a full-stack environment with C# .NET Core, React and SQL Server. Implemented AI support to personalize the student's learning journey."
+    },
+    {
+      "title": "Entrepreneur",
+      "location": "Fuego Dance School",
+      "date": "Aug 2021 - Present",
+      "description": "Founded and run a dance school. Responsible for everything from digital marketing and customer relations to operational planning and event execution.",
+      "current": true
+    },
+    {
+      "title": "Healthcare Assistant",
+      "location": "Sahlgrenska University Hospital",
+      "date": "Jun 2025 - Present",
+      "description": "Working part-time in the psychiatry department at Sahlgrenska Hospital."
+    },
+    {
+      "title": "High School Teacher",
+      "location": "Drottning Blanka Gymnasium",
+      "date": "Aug 2019 — Jun 2024",
+      "description": "Responsible for teaching and mentoring. Developed strong communication skills and experience in leading groups in a high-performance environment."
+    }
+  ]
+}
